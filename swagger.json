@@ -3,7 +3,7 @@
   "info" : {
     "title" : "Web Login",
     "version" : "1",
-    "description" : "Operations for managing CCI web logins. Verify, Create, Update, Delete web logins."
+    "description" : "Manage CCI web logins, verify, create, update, delete web logins."
   },
   "host" : "prod-28.eastus.logic.azure.com",
   "basePath" : "/weblogin",
