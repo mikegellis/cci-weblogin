@@ -1,0 +1,220 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "Web Login",
+    "version" : "1",
+    "description" : "Operations for managing CCI web logins. Verify, Create, Update, Delete web logins."
+  },
+  "host" : "prod-28.eastus.logic.azure.com",
+  "basePath" : "/weblogin",
+  "schemes" : [ "https" ],
+  "securityDefinitions" : {
+    "apiKeyHeader" : {
+      "type" : "apiKey",
+      "name" : "Ocp-Apim-Subscription-Key",
+      "in" : "header"
+    },
+    "apiKeyQuery" : {
+      "type" : "apiKey",
+      "name" : "subscription-key",
+      "in" : "query"
+    }
+  },
+  "security" : [ { }, {
+    "apiKeyHeader" : [ ]
+  }, {
+    "apiKeyQuery" : [ ]
+  } ],
+  "paths" : {
+    "/onyx/eilogincheck/v1" : {
+      "get" : {
+        "description" : "Check Login by User Name and Password",
+        "operationId" : "Check Login",
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "query",
+          "description" : "email address",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "password",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/weblogin"
+            }
+          },
+          "206" : {
+            "description" : "Invalid Login"
+          }
+        },
+        "produces" : [ "application/json" ]
+      }
+    },
+    "/onyx/eiloginget/v1" : {
+      "get" : {
+        "description" : "Get Login by primary Key",
+        "operationId" : "Get Login",
+        "parameters" : [ {
+          "name" : "iWebLoginId",
+          "in" : "query",
+          "description" : "primary key",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/weblogin"
+            }
+          }
+        },
+        "produces" : [ "application/json" ]
+      }
+    },
+    "/onyx/eilogininsert/v1" : {
+      "post" : {
+        "description" : "Create web login and Onyx Individual",
+        "operationId" : "Create Weblogin",
+        "parameters" : [ {
+          "name" : "weblogin-create",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/weblogin-create"
+          }
+        } ],
+        "consumes" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/weblogin"
+            }
+          }
+        },
+        "produces" : [ "application/json" ]
+      }
+    },
+    "/onyx/eilogindelete/v1" : {
+      "delete" : {
+        "description" : "Delete login by primary key",
+        "operationId" : "Delete Login",
+        "parameters" : [ {
+          "name" : "iWebLoginId",
+          "in" : "query",
+          "description" : "primary key",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          }
+        },
+        "produces" : [ "application/json" ]
+      }
+    },
+    "/onyx/eiloginupdate/v1" : {
+      "post" : {
+        "operationId" : "Update WebLogin",
+        "parameters" : [ {
+          "name" : "weblogin",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/weblogin"
+          }
+        } ],
+        "consumes" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "success"
+          }
+        },
+        "produces" : [ "application/json" ]
+      }
+    }
+  },
+  "definitions" : {
+    "weblogin" : {
+      "type" : "object",
+      "properties" : {
+        "iWebLoginId" : {
+          "type" : "integer"
+        },
+        "vchEmail" : {
+          "type" : "string"
+        },
+        "vchPassword" : {
+          "type" : "string"
+        },
+        "iOnyxId" : {
+          "type" : "integer"
+        },
+        "tiConfirmed" : {
+          "type" : "integer"
+        },
+        "vchConfirmationKey" : {
+          "type" : "string"
+        },
+        "dtInserted" : {
+          "type" : "string"
+        },
+        "tiBeta" : {
+          "type" : "integer"
+        },
+        "tiSaveCC" : {
+          "type" : "integer"
+        },
+        "iCreditCardId" : {
+          "type" : "integer"
+        },
+        "iPaymentMethodId" : {
+          "type" : "integer"
+        },
+        "vchPaymentNote" : {
+          "type" : "string"
+        },
+        "vchPaymentPhoneinteger" : {
+          "type" : "string"
+        },
+        "iCompanyTypeCode" : {
+          "type" : "integer"
+        },
+        "iCompanyId" : {
+          "type" : "integer"
+        },
+        "vchFirstName" : {
+          "type" : "string"
+        },
+        "vchLastName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "weblogin-create" : {
+      "type" : "object",
+      "properties" : {
+        "vchEmail" : {
+          "type" : "string"
+        },
+        "vchPassword" : {
+          "type" : "string"
+        },
+        "vchFirstName" : {
+          "type" : "string"
+        },
+        "vchLastName" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "x-azure-api-id" : "cci-weblogin"
+}
