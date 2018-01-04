@@ -102,6 +102,29 @@
         "produces" : [ "application/json" ]
       }
     },
+    "/onyx/eiloginconfirm/v1" : {
+      "post" : {
+        "description" : "Confirm Login by confirmation key",
+        "operationId" : "Confirm Weblogin",
+        "parameters" : [ {
+          "name" : "weblogin-create",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/weblogin-create"
+          }
+        } ],
+        "consumes" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "success",
+            "schema" : {
+              "$ref" : "#/definitions/weblogin-confirm"
+            }
+          }
+        },
+        "produces" : [ "application/json" ]
+      }
+    },
     "/onyx/eilogindelete/v1" : {
       "delete" : {
         "description" : "Delete login by primary key",
@@ -211,6 +234,17 @@
           "type" : "string"
         },
         "vchLastName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "weblogin-confirm" : {
+      "type" : "object",
+      "properties" : {
+        "vchEmail" : {
+          "type" : "string"
+        },
+        "vchConfirmationKey" : {
           "type" : "string"
         }
       }
