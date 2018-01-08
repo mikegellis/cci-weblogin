@@ -2,8 +2,8 @@
   "swagger" : "2.0",
   "info" : {
     "title" : "Web Login",
-    "version" : "1",
-    "description" : "Manage CCI web logins, verify, create, update, delete web logins."
+    "version" : "dev",
+    "description" : "CRUD CCI web logins, verify, create, update, delete web logins."
   },
   "host" : "prod-28.eastus.logic.azure.com",
   "basePath" : "/weblogin",
